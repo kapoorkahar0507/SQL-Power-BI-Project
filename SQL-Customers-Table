@@ -1,0 +1,83 @@
+
+Create database [Store_Data]
+
+use [Store_Data]
+
+create table Customers_Table(
+Customer_ID int primary key,
+Customer_Name varchar(50) not null,
+City varchar(50) not null,
+State varchar(50) not null,
+Pincode char(6) not null,
+Email nvarchar(50) unique,
+Phone_Number varchar(15)
+);
+
+select * from Customers_Table
+
+-- 06/02/2026
+insert into Customers_Table values(1,'Mayank Dwivedi','Anuppur','Madhya Pradesh',484224,'mayank01@gmail.com',7828342212)
+insert into Customers_Table values(2,'Ravi Singh Rathour','Anuppur','Madhya Pradesh',424224,'ravi02@gmail.com',7697414393)
+insert into Customers_Table values(3,'Mayank Sharma','Jaipur','Rajasthan',302001,'mayank03@gmail.com',6377640758)
+insert into Customers_Table values(4,'Abhay Yadav','Banaras','Uttar Pradesh',221001,'abhay04@gmail.com',8004590711)
+insert into Customers_Table values(5,'Abhishek Maurya','Mirzapur','Uttar Pradesh',231001,'abhishek05@gmail.com',7879290719)
+insert into Customers_Table values(6,'Abhishek Nigam','Shahdol','Madhya Pradesh',484001,'abhishek06@gmail.com',8962106078)
+insert into Customers_Table values(7,'Abhishek Pandey','Rewa','Madhya Pradesh',486001,'abhishek07@gmail.com',6263123616)
+insert into Customers_Table values(8,'Shubham Dawar','Ujjain','Madhya Pradesh',456001,'shubham08@gmail.com',9425808855)
+insert into Customers_Table values(9,'Aishwarya Patel','Jabalpur','Madhya Pradesh',482001,'aishwarya09@gmail.com',9340820052)
+insert into Customers_Table values(10,'Ajay Dhakate','Nagpur','Maharashtra',440001,'ajay10@gmail.com',7028926691)
+insert into Customers_Table values(11,'Amisha Chaudhary','Bhopal','Madhya Pradesh',462001,'amisha11@gmail.com',8269094089)
+insert into Customers_Table values(12,'Ballu Gupta','Anuppur','Madhya Pradesh',424224,'ballu12@gmail.com',8120963059)
+insert into Customers_Table values(13,'Bhaiyaram Pal','Singrauli','Madhya pradesh',486889,'bhaiyaram13@gmail.com',7746960263)
+insert into Customers_Table values(14,'Bharat Gupta','Raipur','Chhattisgarh',492001,'bharat14@gmail.com',7067794133)
+insert into Customers_Table values(15,'Bhupendra Singh','Delhi','Delhi',110001,'bhupendra15@gmail.com',9111016593)
+insert into Customers_Table values(16,'Brajnandan Shukla','Anuppur','Madhya Pradesh',484224,'brajnandan16@gmail.com',9893963316)
+insert into Customers_Table values(17,'Bablu Singh','Katni','Madhya Pradesh',483505,'bablu17@gmail.com',9997143547)
+insert into Customers_Table values(18,'Chandan Pandey','Banaras','Uttar Pradesh',221001,'chandan18@gmail.com',9140125111)
+insert into Customers_Table values(19,'Chandra Prakash','Sidhi','Madhya Pradesh',486661,'chandra19@gmail.com',8602646260)
+insert into Customers_Table values(20,'Umesh Chaurasiya','Jhansi','Uttar Pradesh',284001,'umesh20@gmail.com',8435497434)
+
+-- 08/02/2026
+insert into Customers_Table values
+(21,'Yogesh Singh','Bhilwara','Rajasthan',311001,'yogesh21@gmail.com',9166592040),
+(22,'Yogendra Dubey','Kanpur','Uttar Pradesh',208001,'yogendra22@gmail.com',7880084928),
+(23,'Deepak Kahar','kochi','Kerala',682001,'deepak23@gmail.com',7489816019),
+(24,'Dev Dwivedi','Rewa','Madhya Pradesh',486001,'dev24@gmail.com',9669310762),
+(25,'Devendra Parmar','Kanpur','Uttar Pradesh',208001,'devendra25@gmail.com',7880086084),
+(26,'Dilip Dwivedi','Lucknow','Uttar Pradesh',226001,'dilip26@gmail.com',8738999194),
+(27,'Dinkar Tiwari','Satna','Madhya Pradesh',485001,'dinkar27@gmail.com',7089943304),
+(28,'Firoj Khan','Patna','Bihar',800001,'firoj28@gmail.com',8461861894),
+(29,'Funde Lal','Anuppur','Madhya Pradesh',484224,'funde29@gmail.com',7723924049),
+(30,'Gagan Vishwakarma','Satna','Madhya Pradesh',485001,'gagan30@gmail.com',8982520885)
+
+select * from Customers_Table
+
+-- 09/02/2026
+insert into Customers_Table values
+(31,'Ghanshyam Kushwaha','Shahdol','Madhya Pradesh',484001,'ghanshyam31@gmail.com',8770203861),
+(32,'Gaurav Patel','Surat','Gujarat',395003,'gaurav32@gmail.com',8959261531),
+(33,'Govardhan Gurjar','Kota','Rajasthan',324005,'govardhan33@gmail.com',9694981276),
+(34,'Guddu Singh','Rewa','Madhya Pradesh',486001,'guddu34@gmail.com',9425926610),
+(35,'Gulab Patel','Ranchi','Jharkhand',834001,'gulab35@gmail.com',8889976329),
+(36,'Hardeep Singh','Saharanpur','Uttar Pradesh',247001,'hardeep36@gmail.com',9716312396),
+(37,'Hariom Dwivedi','Beohari','Madhya Pradesh',484774,'hariom37@gmailcom',8878752047),
+(38,'Hariom Kulaste','Mandla','Madhya Pradesh',481661,'hariom38@gmail.com',6360440656),
+(39,'Harjyot Singh','Mohali','Punjab',160055,'harjyot39@gmail.com',7000451173),
+(40,'Hetram Yadav','Puri','Odisha',752001,'hetram40@gmail.com',8717986051)
+
+select * from Customers_Table
+
+-- 10/02/2026
+insert into Customers_Table values
+(41,'Ibrar Khan','Haridwar','Uttarakhand',249403,'ibrar41@gmail.com',7489052255),
+(42,'Imran Khan','Siwan','Bihar',841226,'imran42@gmail.com',9685298786),
+(43,'Irshad Ansari','Rohtak','Hariyana',124001,'irshad43@gmail.com',7000243196),
+(44,'Ishwar Deen','Anuppur','Madhya Pradesh',484224,'ishwar44@gmail.com',9285188941),
+(45,'Jay Dixit','Samastipur','Bihar',848101,'jay45@gmail.com',735463178),
+(46,'Jittu Singh','Saharanpur','Uttar Pradesh',247001,'jittu46@gmail.com',7319073206),
+(47,'jittu Singh','Kota','Rajasthan',324001,'jittu47@gmail.com',9636555637),
+(48,'Jitendera Rai','Patna','Bihar',800001,'jitendra48@gmail.com',8821909236),
+(49,'Kamal Chauhan','Pathankot','Punjab',145001,'kamal49@gmail.com',7000420491),
+(50,'karan Patel','Jabalpur','Madhya Pradesh',482001,'karan50@gmail.com',7880086076)
+
+select * from Customers_Table
