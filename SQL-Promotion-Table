@@ -1,0 +1,23 @@
+
+create table Promotion_Table(
+Promotion_ID varchar(10) primary key,
+Promotion_Name varchar(50) not null,
+Ad_Type varchar(50) not null,
+Coupon_Type varchar(30) not null,
+Offer nvarchar(40) not null
+);
+
+select * from Promotion_Table
+
+drop table Promotion_Table
+
+insert into Promotion_Table(Promotion_ID,Promotion_Name,Ad_Type,Coupon_Type,Offer)
+values
+('PR001','Summer sale','Email','SUMMER25','20% Off'),
+('PR002','Festive Diwali','Social Media','FESTIVE25','10% Off'),
+('PR003','New Year Special','Website Banner','NEWYEAR26','Buy 1 Get 1 Free'),
+('PR004','Weekend Flash Sale','Mobile Push','FLASH50','50% Off'),
+('PR005','Clearance Sale','In-App','CLEARANCE26','70% Off')
+
+select * from promotion_table
+
