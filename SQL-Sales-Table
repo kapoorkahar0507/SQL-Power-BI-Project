@@ -1,0 +1,36 @@
+
+
+create table Sales_Table(
+Sale_Date date,
+Customer_ID int foreign key references Customers_Table(Customer_ID),
+Product_ID varchar(10) foreign key references Product_Table(Product_ID),
+Promotion_ID varchar(10) foreign key references Promotion_Table(Promotion_ID),
+Unit_Sold int
+);
+
+select * from Sales_Table
+
+drop table Sales_Table
+
+truncate table Sales_Table
+
+;WITH Numbers AS (
+    SELECT TOP 2000 
+        ROW_NUMBER() OVER (ORDER BY (SELECT NULL)) AS RowNum
+    FROM sys.objects a
+    CROSS JOIN sys.objects b
+)
+INSERT INTO Sales_Table (Sale_Date, Customer_ID, Product_ID, Promotion_ID, Unit_Sold)
+SELECT 
+    DATEADD(DAY, ABS(CHECKSUM(NEWID())) % 365, '2024-01-01') AS Sale_Date,
+    ABS(CHECKSUM(NEWID())) % 50 + 1 AS Customer_ID,
+    'P' + RIGHT('000' + CAST(ABS(CHECKSUM(NEWID())) % 50 + 1 AS VARCHAR), 3) AS Product_ID,
+    
+    CASE 
+        WHEN ABS(CHECKSUM(NEWID())) % 100 < 15   -- 15% chance
+            THEN 'PR' + RIGHT('000' + CAST(ABS(CHECKSUM(NEWID())) % 5 + 1 AS VARCHAR), 3)
+        ELSE NULL
+    END AS Promotion_ID,
+    
+    ABS(CHECKSUM(NEWID())) % 10 + 1 AS Unit_Sold
+FROM Numbers;
