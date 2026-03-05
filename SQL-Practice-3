@@ -1,0 +1,126 @@
+
+
+-- Sales Table
+select * from Sales_Table
+
+select distinct * from Sales_Table
+select distinct Sale_Date from Sales_Table
+select distinct Customer_ID from Sales_Table
+select distinct Product_ID from Sales_Table
+select distinct Promotion_ID from Sales_Table
+select distinct Unit_Sold from Sales_Table 
+
+select * from Sales_Table where Sale_Date>'2024-05-28'
+select * from Sales_Table where Customer_ID = 35
+select * from Sales_Table where Product_ID >='p035'
+select * from Sales_Table where Promotion_ID = 'pr003'
+select * from Sales_Table where Promotion_ID is null
+select * from Sales_Table where Unit_Sold=5
+select * from Sales_Table where Unit_Sold>5
+select * from Sales_Table where Unit_Sold<5
+
+select * from Sales_Table order by Unit_Sold
+select * from Sales_Table order by Product_ID
+select * from Sales_Table order by Product_ID desc
+select * from Sales_Table order by Product_ID asc, Unit_Sold desc
+
+select * from Sales_Table where Customer_ID=26 and Unit_Sold = 8
+select * from Sales_Table where Customer_ID>25 and Unit_Sold<5
+
+select * from Sales_Table where (Unit_Sold=3 or Unit_Sold=5) and Customer_ID>48
+
+select * from Sales_Table where Customer_ID = 20 or Customer_ID=36
+select * from Sales_Table where Customer_ID>15 or Customer_ID<5
+
+select * from Sales_Table where not Customer_ID = 25
+select * from Sales_Table where Customer_ID not in(25)
+select * from Sales_Table where Promotion_ID is null
+select * from Sales_Table where Promotion_ID is not null
+select * from Sales_Table where Promotion_ID = null
+
+
+select * from Sales_Table where Unit_Sold between 4 and 7
+select * from Sales_Table where Unit_Sold not between 4 and 7
+
+select * from Sales_Table where Unit_Sold =5 or Unit_Sold=7
+select * from Sales_Table where Unit_Sold in(5,7)
+select * from Sales_Table where Unit_Sold not in(5,7)
+
+--Update
+select * into #2 from Sales_Table
+
+select * from #2
+
+update #2 set Promotion_ID = 'PR003' where Customer_ID = 11 and Unit_Sold = 3
+
+select * from #2 where Promotion_ID='PR003' and Customer_ID = 11 and Unit_Sold = 3
+
+update #2 set Promotion_ID='PR002' where Customer_ID in(17,40)
+
+update #2 set Promotion_ID='No Offer'
+where Promotion_ID is null
+
+
+--Delete,Truncate, and Drop Table
+
+select * into #3 from Sales_Table 
+
+select * from #3
+
+delete from #3 where Customer_ID = 1 and Unit_Sold = 5
+delete from #3 where Customer_ID in(5,3)
+
+truncate table #3
+
+drop table #3
+
+--Max Fun
+select * from Sales_Table
+
+select max(Sale_Date) [Max SaleDate] from Sales_Table
+select max(Customer_ID) [Max CustomerID] from Sales_Table
+select max(Unit_Sold) [Max Unit sold] from Sales_Table
+
+select Product_ID,Promotion_ID,max(Unit_Sold) [Max Unit sold for eact Product & Offer] from Sales_Table
+group by Product_ID,Promotion_ID order by Product_ID
+
+---- Nested Case 
+select 
+      pr.Promotion_ID,
+      pr.Promotion_Name,
+      s.unit_sold,
+      case
+           when pr.Promotion_Name = 'Summer sale' then
+               case when s.Unit_Sold>5 then 'Premium Summer sale' else 'Affordable Summer sale'
+               end
+       
+          when pr.Promotion_Name = 'Festive Diwali' then
+              case when s.Unit_Sold >5 then 'Premium Festive Diwali' else 'Affordable Festive Diwali'
+              end
+       
+          when pr.Promotion_Name = 'New Year Special' then 
+              case when s.Unit_Sold >5 then 'Premium New Year Special' else 'Affordable New Year Special'
+              end
+          when pr.Promotion_Name = 'Weekend Flash Sale' then 
+              case when s.Unit_Sold >5 then 'Premium Weekend Flash Sale' else 'Affordable Weekend Flash Sale'
+              end 
+ else
+              case when s.Unit_Sold >5 then 'Premium Clearance Sale' else 'Affordable Clearance Sale' 
+              end
+      end as [Promotion Category]
+from Sales_Table s join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+
+--------------------------------------------------------------------------------------------------------------
+
+select 
+        Pr.promotion_ID,
+        pr.Promotion_Name,
+       s.Unit_Sold,
+       
+       case  
+           when s.Unit_Sold>5  
+               then 'Premium' + pr.Promotion_Name
+               else 'Affordabnle' + pr.Promotion_Name
+       end as [Promotion Category]
+from Sales_Table s join Promotion_Table pr 
+on s.Promotion_ID = pr.Promotion_ID
