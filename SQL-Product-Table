@@ -1,0 +1,81 @@
+
+
+create table Product_Table (
+Product_ID varchar(10) PRIMARY KEY,
+Product_Name VARCHAR(50) NOT NULL,
+Product_Line VARCHAR(50) NOT NULL,
+Price DECIMAL(8,2) NOT NULL
+);
+
+select * from Product_Table
+
+
+insert into Product_Table (Product_ID, Product_Name, Product_Line, Price)
+values
+('P001', 'Laptop Pro 15', 'Electronics', 75000.00),
+('P002', 'Wireless Mouse', 'Electronics', 1200.50),
+('P003', 'Office Chair', 'Furniture', 8500.00),
+('P004', 'LED Monitor 24"', 'Electronics', 13500.99),
+('P005', 'Wooden Desk', 'Furniture', 15000.00),
+('P006', 'Bluetooth Speaker', 'Electronics', 2999.99),
+('P007', 'Running Shoes', 'Footwear', 3200.00),
+('P008', 'Smartphone X', 'Electronics', 55000.00),
+('P009', 'Backpack Travel', 'Accessories', 2200.75),
+('P010', 'Gaming Keyboard', 'Electronics', 4500.00);
+
+select * from Product_Table
+
+insert into Product_Table
+values
+('P011', 'Water Bottle', 'Accessories', 499.00),
+('P012', 'Table Lamp', 'Home Decor', 1800.00),
+('P013', 'Notebook A5', 'Stationery', 120.00),
+('P014', 'Pen Pack', 'Stationery', 250.00),
+('P015', 'Sofa Set', 'Furniture', 45000.00),
+('P016', 'Dining Table', 'Furniture', 38000.00),
+('P017', 'Air Conditioner', 'Electronics', 42000.00),
+('P018', 'Refrigerator 260L', 'Electronics', 30000.00),
+('P019', 'Wrist Watch', 'Accessories', 6500.00),
+('P020', 'Formal Shoes', 'Footwear', 4000.00);
+
+select * from Product_table
+
+insert into Product_Table
+values
+('P021', 'T-Shirt Cotton', 'Clothing', 799.00),
+('P022', 'Jeans Slim Fit', 'Clothing', 1999.00),
+('P023', 'Microwave Oven', 'Electronics', 12000.00),
+('P024', 'Ceiling Fan', 'Electronics', 2800.00),
+('P025', 'Coffee Maker', 'Home Appliances', 3500.00),
+('P026', 'Hair Dryer', 'Home Appliances', 1500.00),
+('P027', 'Electric Kettle', 'Home Appliances', 1200.00),
+('P028', 'Study Table', 'Furniture', 9500.00),
+('P029', 'Bookshelf', 'Furniture', 7000.00),
+('P030', 'Printer Laser', 'Electronics', 11000.00);
+
+select * from Product_Table
+
+insert into Product_Table (Product_ID, Product_Name, Product_Line, Price)
+values
+('P031', 'Scanner Pro', 'Electronics', 9000.00),
+('P032', 'Tablet 10"', 'Electronics', 18000.00),
+('P033', 'Fitness Band', 'Electronics', 2999.00),
+('P034', 'Sunglasses UV', 'Accessories', 1500.00),
+('P035', 'Leather Belt', 'Accessories', 999.00),
+('P036', 'Jacket Winter', 'Clothing', 3500.00),
+('P037', 'Bed King Size', 'Furniture', 55000.00),
+('P038', 'Mattress Foam', 'Furniture', 12000.00),
+('P039', 'Cookware Set', 'Kitchen', 6000.00),
+('P040', 'Gas Stove', 'Kitchen', 4500.00),
+('P041', 'Mixer Grinder', 'Home Appliances', 3200.00),
+('P042', 'Vacuum Cleaner', 'Home Appliances', 8500.00),
+('P043', 'Wall Clock', 'Home Decor', 1200.00),
+('P044', 'Curtains Set', 'Home Decor', 2500.00),
+('P045', 'Notebook Backpack', 'Accessories', 1800.00),
+('P046', 'Sports Cap', 'Clothing', 650.00),
+('P047', 'Bluetooth Earbuds', 'Electronics', 3999.00),
+('P048', 'Power Bank 20000mAh', 'Electronics', 2200.00),
+('P049', 'Extension Cord', 'Electronics', 750.00),
+('P050', 'LED Bulb 12W', 'Electronics', 199.00);
+
+select * from Product_Table
