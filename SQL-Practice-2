@@ -1,0 +1,101 @@
+
+
+-- Product Table
+select * from Product_Table
+
+select distinct * from Product_Table
+select distinct Product_Name from Product_Table
+select distinct Product_Line from Product_Table
+select distinct Price from Product_Table
+
+--Max Function
+
+select * from Product_Table
+
+select max(price) [Max Price] from Product_Table
+select max(Product_ID) [Max Product_ID] from Product_Table
+select max(Product_Name) [Max Product_name] from Product_Table	
+select max(Product_Line) [Max Product Line] from Product_Table
+
+select distinct Product_Name from Product_Table
+
+--Maximum Price for each product line
+select distinct Product_Line from Product_Table
+
+select Product_Line, max(Price) [Max Price for each Category] from Product_Table
+group by Product_Line
+
+
+--Min Function
+select * from Product_Table
+
+select min(product_id) [Min ProductID] from Product_TAble
+select min(Product_Name) [Min Product Name] from product_table
+select min(Product_Line) [Min Product Line] from Product_Table
+select min(Price) [Min Price] from Product_Table
+
+select Product_Line,min(Price) [Min Price for Each category] from Product_Table
+group by Product_Line
+
+--Sum Function
+select * from Product_Table
+
+select SUM(Price) [Total Amount] from Product_Table
+
+select product_line,sum(price) [Sum of price for each category] from Product_Table
+group by product_line order by product_line
+
+--Average Function
+select * from Product_Table
+
+select avg(price) [Average price] from Product_Table
+
+select product_line,avg(price) [Average Price for each categry] from Product_Table
+group by product_line
+
+--Count Function
+select * from Product_Table
+
+select count(*) [Total Row] from Product_Table
+select count(product_id) [Total proctct Id] from Product_Table
+select count(product_line) [Total number of Product line] from Product_Table
+
+select product_line,count(distinct product_line) [Total number of Product line] from Product_Table
+group by product_line
+
+select product_line,count(product_line) [Total number of Product line] from Product_Table
+group by product_line
+
+select product_line,count(*) [Total number of Product line] from Product_Table
+group by product_line
+
+
+select distinct product_line from Product_Table
+
+select product_line,sum(price) from Product_Table
+group by product_line
+
+select product_line,sum(price) [Sum of price for each Category] from Product_Table
+where price>3000
+group by product_line order by sum(price) desc
+
+select product_line,sum(price) [Sum of price for each Category] from Product_Table
+where price>3000
+group by product_line 
+having sum(price) > 10000
+
+select distinct product_line from Product_Table
+
+select * from Product_Table
+order by
+      case 
+          when product_line in ('Electronics') then 1
+          when product_line in ('Accessories') then 2
+          when product_line in ('Clothing') then 3
+          when product_line in ('Footwear') then 4
+          when product_line in ('Furniture') then 5
+          when product_line in ('Home Appliances') then 6
+          when product_line in ('Home Decor') then 7
+          when product_line in ('Kitchen') then 8
+          else 9
+end 
