@@ -1,0 +1,130 @@
+
+
+--Product sold with Offer 
+
+select 
+     s.Sale_Date,
+     c.Customer_ID,
+     p.Product_ID,
+     pr.Promotion_ID,
+     s.Unit_Sold
+from Sales_Table s 
+     inner join Customers_Table c on s.Customer_ID=c.Customer_ID
+     inner join Product_Table p on s.Product_ID=p.Product_ID
+     inner join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+
+
+--Total Sales without offer
+
+select 
+      s.Sale_Date,
+      s.Customer_ID,
+      s.Product_ID,
+      pr.Promotion_ID
+from Sales_Table s left join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+where pr.Promotion_ID is null
+---------------------------------------------------------------------------------------
+select 
+   count(*) [Total Sales],
+   sum(case 
+            when Promotion_ID is null 
+            then 1
+            else 0
+         end) [Total sales without Offer]
+from Sales_Table 
+
+---------------------------------------------------------------------------------------
+select 
+   count(*) [Total Sales],
+   sum(case 
+            when pr.Promotion_ID is null 
+            then 1
+            else 0
+         end) [Total sales without Offer]
+from Sales_Table s left join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+
+--How many times Offers were used
+
+select pr.Promotion_Name,
+       count(pr.Promotion_ID) [Times offer used]
+from Sales_Table s right join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+group by pr.Promotion_Name
+
+
+
+SELECT 
+    s.Sale_Date,
+    pr.Promotion_Name
+FROM Sales_Table s
+FULL OUTER JOIN Promotion_Table pr
+    ON s.Promotion_ID = pr.Promotion_ID;
+
+--Relationship between Sales and Offer(Promotion)
+select 
+      s.Sale_Date,
+      pr.Promotion_ID,
+      pr.Promotion_Name
+from Sales_Table s full outer join Promotion_Table pr on s.Promotion_ID=pr.Promotion_ID
+
+--Total revenue for each Product
+select p.Product_Name,
+       sum(s.Unit_Sold) [Total Units],
+       sum(s.Unit_Sold*p.Price) [Total Revenue]
+from Sales_Table s inner join Product_Table p on s.Product_ID=p.Product_ID
+group by p.Product_Name
+order by [Total Revenue] desc
+
+
+--City-wise Sale
+select c.City,
+       sum(s.Unit_Sold*p.Price) [Total Sale]
+from Sales_Table s join Customers_Table c on 
+      s.Customer_ID=c.Customer_ID join Product_Table p on 
+      s.Product_ID=p.Product_ID
+group by c.City order by [Total Sale] desc
+
+--State-wise Sale 
+select c.State,
+       sum(s.Unit_Sold*p.Price) [Total Sale]
+from Sales_Table s join Customers_Table c on 
+       s.Customer_ID=c.Customer_ID join Product_Table p on
+       s.Product_ID=p.Product_ID
+group by c.State order by [Total Sale] desc
+
+
+--Promotion wise Revenue Analysis
+select 
+      pr.Promotion_Name,
+      sum(s.Unit_Sold) [Total Units Sold],
+      sum(s.Unit_Sold*p.Price) [Revenue]
+from Promotion_Table pr 
+      inner join Sales_Table s on pr.Promotion_ID=s.Promotion_ID
+      inner join Product_Table p on s.Product_ID=p.Product_ID
+group by pr.Promotion_Name
+order by sum(s.Unit_Sold*p.Price) desc
+
+--Customers with Spent money
+select
+      c.Customer_ID,
+      c.Customer_Name,
+      sum(s.Unit_Sold*p.Price) as Total_spent
+from Sales_Table s 
+     inner join Customers_Table c on
+     s.Customer_ID=c.Customer_ID
+     inner join Product_Table p on
+     s.Product_ID=p.Product_ID
+group by c.Customer_ID,c.Customer_Name 
+order by Total_spent desc
+
+--Top 10 high value customers
+select top 10
+      c.Customer_ID,
+      c.Customer_Name,
+      sum(s.Unit_Sold*p.Price) as Total_spent
+from Sales_Table s 
+     inner join Customers_Table c on
+     s.Customer_ID=c.Customer_ID
+     inner join Product_Table p on
+     s.Product_ID=p.Product_ID
+group by c.Customer_ID,c.Customer_Name 
+order by Total_spent desc
