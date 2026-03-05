@@ -1,0 +1,50 @@
+
+select* from Customers_Table
+
+select *from Product_Table
+
+select * from Promotion_Table
+
+select * from Sales_Table
+
+-- Customer Table
+select distinct Customer_Name from Customers_Table
+
+select distinct * from Customers_Table
+select distinct City from Customers_Table
+select distinct State from Customers_Table
+select distinct Pincode from Customers_Table
+
+--Temporary Tables
+select * into #1 from Customers_Table
+
+select * from #1
+
+select * into ##2 from Customers_Table
+
+select * from ##2
+/* With single # we can see the temporary table only in same query 
+but with ## we can see temporary table in other querys as well */
+
+
+select * from Customers_Table where Customer_ID = 11
+select * from Customers_Table where Customer_ID in(11)
+
+select * from Customers_Table where city ='anuppur'
+select * from Customers_Table where Pincode=484224
+
+select Customer_Name,Email,Phone_Number from Customers_Table where Customer_ID = 25
+
+
+--Top N
+
+select * from Customers_Table 
+
+select top 5 * from Customers_Table
+select top 5 Customer_Name from Customers_Table
+select top 5 * from Customers_Table order by Customer_ID desc
+
+select distinct state from Customers_Table
+
+
+
